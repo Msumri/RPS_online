@@ -1,0 +1,119 @@
+[gd_scene format=3 uid="uid://c68dopvrvrrju"]
+
+[ext_resource type="Script" uid="uid://b0c53tm56an3b" path="res://simple/simple.gd" id="1_ne13p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sa15i"]
+bg_color = Color(0.49747366, 0.49747372, 0.49747354, 1)
+
+[node name="Simple" type="Control" unique_id=1746832692]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ne13p")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=400135007]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="winner" type="Label" parent="VBoxContainer" unique_id=596902654]
+layout_mode = 2
+
+[node name="p2_choice" type="Label" parent="VBoxContainer" unique_id=397259959]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Player 2 choice : "
+
+[node name="your_choice" type="Label" parent="VBoxContainer" unique_id=31656012]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Your choice: "
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1716910467]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="r" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=1632783332]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Rock"
+
+[node name="p" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=1866023828]
+unique_name_in_owner = true
+layout_mode = 2
+text = "paper"
+
+[node name="s" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=1565774706]
+unique_name_in_owner = true
+layout_mode = 2
+text = "scissors"
+
+[node name="redo" type="Button" parent="VBoxContainer" unique_id=1217288773]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Redo"
+
+[node name="HTTPRequest" type="HTTPRequest" parent="." unique_id=1583169510]
+
+[node name="online" type="CanvasLayer" parent="." unique_id=691882675]
+unique_name_in_owner = true
+visible = false
+
+[node name="PanelContainer" type="PanelContainer" parent="online" unique_id=416328719]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.0
+offset_top = -232.0
+offset_right = 103.0
+offset_bottom = 119.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_sa15i")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="online/PanelContainer" unique_id=1028126381]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+
+[node name="host" type="Button" parent="online/PanelContainer/VBoxContainer" unique_id=965939]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Host"
+
+[node name="Label" type="Label" parent="online/PanelContainer/VBoxContainer" unique_id=1489812182]
+layout_mode = 2
+text = "Room ID"
+horizontal_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="online/PanelContainer/VBoxContainer" unique_id=602949041]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="join" type="Button" parent="online/PanelContainer/VBoxContainer" unique_id=1219891430]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Join"
+
+[node name="Timer" type="Timer" parent="." unique_id=1343569210]
+unique_name_in_owner = true
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/r" to="." method="_on_r_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/p" to="." method="_on_p_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/s" to="." method="_on_s_pressed"]
+[connection signal="pressed" from="VBoxContainer/redo" to="." method="_on_redo_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
